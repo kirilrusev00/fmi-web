@@ -1,0 +1,7 @@
+CREATE DATABASE university;
+
+CREATE TABLE store ( 
+  id VARCHAR(5) NOT NULL PRIMARY KEY, 
+  name VARCHAR(255) NOT NULL, 
+  quantity INT NOT NULL
+);

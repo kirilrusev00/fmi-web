@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="bg">
+
+<head>
+  <meta charset="utf-8" />
+  <title>ReactJS</title>
+  <link rel="icon" href="img/favicon.ico">
+  <link rel="stylesheet" href="css/site.css">
+</head>
+
+<body>
+  <header id="navigation-header">
+    <nav>
+      <button type="button" class="menu-button" onclick="showOrHideContents()"></button>
+    </nav>
+    <a href="#" class="start-link">
+      <img src="img/React-icon.svg" alt="react icon" class="react-icon">
+      <h1>ReactJS</h1>
+    </a>
+    <script src="javascript/navbar.js"></script>
+  </header>
+  <main>
+    <nav id="contents" class="contents">
+      <ol>
+        <li><a href="#brief-history" class="contents-links">Кратка история на библиотеката</a></li>
+        <li><a href="#start-with-react" class="contents-links">Как да започнем своя проект с React?</a></li>
+        <li><a href="#how-to-react" class="contents-links">Същинска работа с React</a>
+          <ul>
+            <li><a href="#hello-world" class="contents-links">Hello World</a></li>
+            <li><a href="#jsx" class="contents-links">Накратко за JSX</a></li>
+            <li><a href="#rendering" class="contents-links">Рендериране на елементи</a></li>
+            <li><a href="#components-props" class="contents-links">Компоненти и свойства</a></li>
+            <li><a href="#forms" class="contents-links">Форми</a></li>
+          </ul>
+        </li>
+        <li><a href="#states" class="contents-links">Управление на състоянията</a>
+          <ul>
+            <li><a href="#redux" class="contents-links">Redux</a></li>
+            <li><a href="#hooks" class="contents-links">React Hooks</a></li>
+          </ul>
+        </li>
+        <li><a href="#why-react" class="contents-links">Защо да използваме React?</a></li>
+        <li><a href="#sources" class="contents-links">Източници</a></li>
+      </ol>
+      <script src="javascript/navmenu.js"></script>
+    </nav>
+    <article id="article" class="article">
+      <script src="javascript/code-examples.js"></script>
+      <header id="article-header">
+        <img src="img/React-icon.svg" alt="react icon" class="react-icon">
+        <h1>ReactJS</h1>
+        <h3 class="author">Автор: Кирил Русев, ФН: 62309</h3>
+      </header>
+      <p class="intro">ReactJS и React Native са технологии за уеб и мобилно развитие, въведени от Facebook. Проектът стартира през 2011 г. от Джордан Уолк, софтуерен инженер на Facebook. За да опрости процеса на разработка и да насърчи по-удобно потребителско изживяване, той решава да създаде библиотека, която да позволи изграждането на уеб интерфейс с JavaScript.</p>
+      <section id="brief-history">
+        <h2 class="subsection-header">Кратка история на библиотеката</h2>
+        <p>Преди да разработи ReactJS или просто React, както се нарича в днешно време, Facebook се сблъсква с основна UX задача - изграждане на динамичен потребителски интерфейс с висока производителност. Например инженерите искали да направят актуализацията на news feed-а да се случва в същото време, в което потребителите използват чата.</p>
+        <p>За да постигне това, Facebook трябва да оптимизира самия процес на разработка и Джордан Уолк решава да го направи с JavaScript. Той предлага XHP, синтаксисът за маркиране на Facebook, да се съвмести с JS. Идеята изглежда невъзможна, но през 2011 г. екипът му пуска библиотеката ReactJS като симбиоза между JavaScript и XHP. Тогава Facebook осъзнава, че ReactJS работи по-бързо от всяка друга имплементация от този вид. През 2013 г. Facebook пуска React като JavaScript инструмент с отворен код.</p>
+        <p>Две години по-късно същата група инженери пускат React Native, хибридна рамка за разработка на мобилни приложения за iOS и Android. Инструментът се основава на същите принципи като ReactJS и скоро е приет от инженерната общност и компаниите, които се придържат към мобилната стратегия.</p>
+        <p>Как работи React Native? React Native комбинира разработка на собствено приложение с разработка на потребителски интерфейс на JavaScript. Докато функционалности, включващи тежки изчисления, могат да бъдат имплементирани с вградени модули за iOS и Android, останалата част от кода може да бъде написана с JavaScript и споделена между платформите. За разлика от инструментите за различни платформи PhoneGap и Cordova, React Native не използва WebView, мобилен механизъм, който обгръща код. Вместо това, той осигурява достъп до естествени мобилни контролери, което позволява да се постигне естествен вид и усещане на приложенията.</p>
+      </section>
+      <section id="start-with-react">
+        <h2 class="subsection-header">Как да започнем своя проект с React?</h2>
+        <p>Един от най-ефективните начини да се разбере React е чрез използването на неговите инструменти за изграждане на уеб приложения за реални проекти. Това не само ще помогне да се научат рамката и инструментите, но също така ще бъде от бонус пред бъдещи работодатели.</p>
+        <h3 id="npm">npm</h3>
+        <p>При начало на работата с JavaScript (включително библиотеката React) трябва да се инсталира Node package manager (npm). Подобно на мениджъра на пакети, който се доставя със съответната дистрибуция на Linux (или Chocolatey на Windows или Homebrew на macOS), npm предоставя команда за заявка към софтуерно хранилище и инсталиране на това, от което има нужда. Това включва важни библиотеки, като ReactJS компоненти.</p>
+        <h3 id="create-app">Изграждане на приложение</h3>
+        <p>При изграждане на приложение на React за първи път има няколко налични опции:</p>
+        <ul>
+          <li>Може да се добавят няколко script тагове към HTML и тогава React трябва да работи. Това обаче не е препоръчителен подход за сайт в производство.</li>
+          <li>Може също така да се изпълни <code>npx create-response-app my-app</code>, за да може Create React App автоматично да настрои проект с всички необходими инструменти.</li>
+        </ul>
+        <p><a href="https://facebook.github.io/create-react-app/" target="_blank">Create React App</a> е шаблон на проект за започване на работа с React. Преди Facebook да пусне Create React App, създаването на работещ проект в React било досадна задача. Но с този инструмент може да се настрои конвейер за изграждане на интерфейс, структура на проекти, среда за разработчици и оптимизация на приложението за производство за секунди с нулева конфигурация. Всичко това се постига само с една команда. Нещо повече, при нужда от по-усъвършенствана конфигурация, може да се „извади“ (<i>eject</i>) от Create React App и да се редактират директно конфигурационните му файлове.</p>
+        <p>Create React App е с отворен код под лиценза MIT и може да се достъпи в това <a href="https://github.com/facebook/create-react-app" target="_blank">GitHub репо</a>.</p>
+        <p>Други възможни шаблони, алтернативи на Create React App, са <a href="http://www.reactboilerplate.com/" target="_blank">React Boilerplate</a> и <a href="https://github.com/coryhouse/react-slingshot" target="_blank">React Slingshot</a>. И двата са добре поддържани и с отворен код под лиценза MIT.</p>
+        <ul>
+          <li>Програмистите могат сами да изградят нужния инструментариум и да научат повече за това как работят инструментите.</li>
+        </ul>
+        <p>Инструментите за изграждане на проект, използващ React, помагат за улесняване на живота на разработчиците. Те свеждат до минимум стъпките при изграждане, за да помогнат на програмистите да се съсредоточат и да постигнат бързо целта си: да напишат код и да създадат добър продукт.</p>
+        <p>Основен инструмент, който се използва, е <a href="https://webpack.js.org/" target="_blank">webpack</a>. Този инструмент генерира граф на зависимости по време на процеса на изграждане, събира всички файлове (JavaScript, CSS и др.), обработва ги (комбинира, минимизира и т.н.) и създава набор от файлове (<i>bundles</i>), готови за обслужване от браузъра. Налични са и други инструменти (като <a href="https://parceljs.org/" target="_blank">Parcel</a> и <a href="https://rollupjs.org/" target="_blank">Rollup</a>).</p>
+        <p>Друга сравнително нова възможност е <a href="https://www.snowpack.dev/" target="_blank">Snowpack</a>. Snowpack е светкавично бърз инструмент за изграждане на интерфейс, предназначен за модерния уеб. Това е алтернатива на по-тежки, по-сложни пакети като webpack или Parcel в работния процес за разработка. Snowpack използва вградената модулна система на JavaScript (известна като <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import" target="_blank">ESM</a>), за да избегне ненужната работа и да остане бърз, независимо колко голям е проектът.</p>
+        <p>Snowpack е модерен, лек инструмент за изграждане за по-бърза уеб разработка. Традиционните инструменти за изграждане на JavaScript като webpack и Parcel трябва да възстановяват и събират цели парчета (<i>bundles</i>) от приложението всеки път, когато се запази един файл. Тази стъпка за преструктуриране въвежда закъснение между натискане на запазване на промените и тяхното отразяване в браузъра.</p>
+        <p>Snowpack обслужва приложение отделно по време на разработката. Всеки файл се изгражда само веднъж и след това се кешира завинаги. Когато даден файл се промени, Snowpack възстановява този единичен файл. Не се губи време за пакетиране на всяка промяна, а само незабавни актуализации в браузъра (направени още по-бързо чрез <a href="https://www.snowpack.dev/concepts/hot-module-replacement" target="_blank">Hot-Module Replacement (HMR)</a>).</p>
+        <p>Разделената (<i>unbundled</i>) разработка при Snowpack все още поддържа същите свързани (<i>bundled</i>) изграждания на файлове. При създаване на приложение за производство, може да се включи предпочитан пакет чрез официален плъгин за Webpack или Rollup (идва скоро). Тъй като Snowpack вече ще обработва компилацията, не се изисква сложна конфигурация на пакета.</p>
+        <p>Така Snowpack дава най-доброто от двата свята: бърза, отделена разработка с оптимизирана производителност във вашите комбинирани (<i>bundled</i>) производствени версии.</p>
+        <figure class="image-block">
+          <img src="img/snowpack-unbundled-example-3.png" alt="Bundled vs. unbundled build tools" class="main-image">
+          <figcaption class="image-description">Фигура 1. Сравнение между webpack и Snowpack <a href="#source-5">[5]</a></figcaption>
+        </figure>
+        <p>Повече информация за това как да се стартира React проект със Snowpack има <a href="https://www.snowpack.dev/tutorials/react" target="_blank">тук</a>.</p>
+      </section>
+      <section id="how-to-react">
+        <h2 class="subsection-header">Същинска работа с React</h2>
+        <p><i>Всички примери в тази секция са взети от <a href="#source-6">[6]</a> и могат да се изпробват, като се копира техният код и се компилира в <a href="https://codepen.io/pen?&editors=0010" target="_blank">CodePen</a>.</i></p>
+        <section id="hello-world">
+          <h3>Hello World</h3>
+          <p>Най-простият пример на React изглежда така:</p>
+          <figure id="pure-code-1" class="pure-code">
+            <pre>
+<code>ReactDOM.render(
+  &lt;h1&gt;Hello, world!&lt;/h1&gt;,
+  document.getElementById('root')
+);</code></pre>
+            <figcaption class="image-description">Код 1. Hello, world! <a href="#source-6">[6]</a></figcaption>
+            <button class="show-result" onclick="showResult(1);">Покажи резултата от изпълнението на кода</button>
+          </figure>
+          <figure id="image-example-1" class="image-example">
+            <img src="img/examples/hello-world.png" alt="hello world example" class="main-image">
+            <figcaption class="image-description">Фигура 2. Екранна снимка на кода, изпълнен в CodePen.</figcaption>
+            <button class="show-code" onclick="showCode(1);">Покажи кода</button>
+          </figure>
+        <p>Показва заглавие, което казва “Hello, world!” на страницата.</p>
+        </section>
+        <section id="jsx">
+          <h3>Накратко за JSX</h3>
+          <p>Следният код представлява декларация на променлива:</p>
+          <pre><code>const element = &lt;h1&gt;Hello, world!&lt;/h1&gt;;</code></pre>
+          <p>Този странен синтаксис на тагове не е нито string, нито HTML. Нарича се JSX и е синтаксисно разширение на JavaScript. Препоръчва се да се използва с React, за да се опише как трябва да изглежда потребителският интерфейс. JSX може да напомня за език на шаблон, но той идва с пълната мощ на JavaScript. JSX произвежда React елементи.</p>
+          <h4>Защо JSX?</h4>
+          <p>React обхваща факта, че логиката на изобразяване е присъщо свързана с друга логика на потребителския интерфейс - как се обработват събитията, как състоянието се променя с течение на времето и как данните се подготвят за показване.</p>
+          <p>Вместо да разделя изкуствено технологиите, като поставя markup и логика в отделни файлове, React разделя проблемите със слабо свързани единици, наречени „компоненти“, които съдържат и двете. React не изисква използването на JSX, но повечето хора го намират за полезно като визуална помощ при работа с потребителски интерфейс в кода на JavaScript. Той също така позволява на React да показва по-полезни съобщения за грешки и предупреждения.</p>
+        </section>
+        <section id="rendering">
+          <h3>Рендериране на елементи</h3>
+          <p>Елементите са най-малките градивни елементи на приложенията React. Елементът описва какво може да се види на екрана:</p>
+          <pre><code>const element = &lt;h1&gt;Hello, world!&lt;/h1&gt;;</code></pre>
+          <p>За разлика от DOM елементите на браузъра, React елементите са обикновени обекти и са евтини за създаване. React DOM се грижи за актуализирането на DOM, за да съответства на React елементите.</p>
+          <h4>Рендериране на елемент в DOM</h4>
+          <p>Нека има следния <code class="code-text">&lt;div&gt;</code> някъде във HTML файла:</p>
+          <pre><code>&lt;div id="root"&gt;&lt;/div&gt;</code></pre>
+          <p>Нарича се „root“ DOM възел, защото всичко вътре в него ще се управлява от React DOM. Приложенията, изградени само с React, обикновено имат един корен DOM възел. Ако React се интегрира в съществуващо приложение, може да има неограничен брой изолирани root DOM възли.</p>
+          <p>За да се изобрази React елемент в root DOM възел, трябва да се подадат и двата на <code class="code-text">ReactDOM.render()</code>:</p>
+          <pre>
+<code>const element = &lt;h1&gt;Hello, world&lt;/h1&gt;;
+ReactDOM.render(element, document.getElementById('root'));</code></pre>
+          <p>Показва “Hello, world” на страницата.</p>
+          <h4>Актуализиране на визуализирания елемент</h4>
+          <p>Елементите в React са <i>immutable</i>. След като се създаде елемент, не може да се променят неговите деца или атрибути. Елементът е като единичен кадър във филм - той представлява потребителския интерфейс в определен момент от времето.</p>
+          <p>С познанията досега, единственият начин да се актуализира потребителския интерфейс е да се създаде нов елемент и да се предаде на <code class="code-text">ReactDOM.render()</code>.</p>
+          <p>В следния пример с тиктакащ часовник:</p>
+          <figure id="pure-code-2" class="pure-code">
+            <pre>
+<code>function tick() {
+  const element = (
+    &lt;div&gt;
+      &lt;h1&gt;Hello, world!&lt;/h1&gt;
+      &lt;h2&gt;It is {new Date().toLocaleTimeString()}.&lt;/h2&gt;
+    &lt;/div&gt;
+  );
+  ReactDOM.render(element, document.getElementById('root'));
+}
+
+setInterval(tick, 1000);</code></pre>
+            <figcaption class="image-description">Код 2. Тиктакащ часовник <a href="#source-6">[6]</a></figcaption>
+            <button class="show-result" onclick="showResult(2);">Покажи резултата от изпълнението на кода в Dev Tools на браузъра</button>
+          </figure>
+          <figure id="image-example-2" class="image-example">
+            <img src="img/granular-dom-updates.gif" alt="ticking clock examlpe" class="main-image">
+            <figcaption class="image-description">Фигура 3. Примерът, проверен с инструментите на браузъра.  <a href="#source-6">[6]</a></figcaption>
+            <button class="show-code" onclick="showCode(2);">Покажи кода</button>
+          </figure>
+          <p>Той извиква <code class="code-text">ReactDOM.render()</code> всяка секунда чрез <code class="code-text">setInterval()</code> callback.</p>
+          <h4>React актуализира само това, което е нужно</h4>
+          <p>React DOM сравнява елемента и неговите деца с предишния и прилага само актуализациите на DOM, необходими за привеждане на DOM в желаното състояние.</p>
+          <p>Това може да се провери, като се изследва последния пример с инструментите на браузъра.</p>
+          <p>Въпреки че се създава елемент, описващ цялото дърво на потребителския интерфейс на всяка отметка, само текстовият възел, чието съдържание е променено, се актуализира от React DOM. Мисленето за това как потребителският интерфейс трябва да изглежда във всеки един момент, а не как да го променя с времето, елиминира цял клас грешки.</p>
+        </section>
+        <section id="components-props">
+          <h3>Компоненти и свойства</h3>
+          <p>Компонентите позволяват да се раздели потребителския интерфейс на независими части за многократна употреба и да се мисли за всяка част изолирано. Концептуално компонентите са като JavaScript функции. Те приемат произволни входове, наречени свойства (<i>props</i>), и връщат React елементи, описващи какво трябва да се появи на екрана.</p>
+          <h4>Компоненти като функция и като клас</h4>
+          <p>Най-простият начин за дефиниране на компонент е да се напише JavaScript функция:</p>
+          <pre>
+<code>function Welcome(props) {
+  return &lt;h1&gt;Hello, {props.name}&lt;/h1&gt;;
+}</code></pre>
+          <p>Тази функция е валиден React компонент, тъй като приема единичен аргумент "props" (което означава свойства) с данни и връща React елемент. Такива компоненти се наричат „функционални компоненти“, защото са буквално JavaScript функции.</p>
+          <p>Може също да се използва ES6 клас, за да се дефинира компонент:</p>
+          <pre>
+<code>class Welcome extends React.Component {
+  render() {
+    return &lt;h1&gt;Hello, {this.props.name}&lt;/h1&gt;;
+  }
+}</code></pre>
+          <p>Горните два компонента са еквивалентни от гледна точка на React.</p>
+          <h4>Рендериране на компонент</h4>
+          <p>Досега в примерите са показани само елементи на React, които представляват DOM тагове:</p>
+          <pre><code>const element = &lt;div /&gt;;</code></pre>
+          <p>Елементите обаче могат да представляват и дефинирани от потребителя компоненти:</p>
+          <pre><code>const element = &lt;Welcome name="Sara" /&gt;;</code></pre>
+          <p>Когато React вижда елемент, представляващ дефиниран от потребителя компонент, той предава JSX атрибути и елементи деца на този компонент като единичен обект. Този обект се нарича “props“.</p>
+          <p>Например този код показва „Hello, Sara“ на страницата:</p>
+          <figure id="pure-code-3" class="pure-code">
+            <pre>
+<code>function Welcome(props) {
+  return &lt;h1&gt;Hello, {props.name}&lt;/h1&gt;;
+}
+
+const element = &lt;Welcome name="Sara" /&gt;;
+ReactDOM.render(
+  element,
+  document.getElementById('root')
+);</code></pre>
+            <figcaption class="image-description">Код 3. Hello, Sara <a href="#source-6">[6]</a></figcaption>
+            <button class="show-result" onclick="showResult(3);">Покажи резултата от изпълнението на кода</button>
+          </figure>
+          <figure id="image-example-3" class="image-example">
+            <img src="img/examples/hello-sara.png" alt="hello sara example" class="main-image">
+            <figcaption class="image-description">Фигура 4. Екранна снимка на кода, изпълнен в CodePen.</figcaption>
+            <button class="show-code" onclick="showCode(3);">Покажи кода</button>
+          </figure>
+          <p><i>Обобщение на това какво се случва в този пример:</i></p>
+          <ol>
+            <li>Извиква се <code class="code-text">ReactDOM.render()</code> с елемента <code class="code-text">&lt;Welcome name="Sara" /&gt;</code>.</li>
+            <li>React извиква <code class="code-text">Welcome</code> компонента с <code class="code-text">{name: 'Sara'}</code> като свойства.</li>
+            <li><code class="code-text">Welcome</code> компонентът връща елемент <code class="code-text">&lt;h1&gt;Hello, Sara&lt;/h1&gt;</code> като резултат.</li>
+            <li>React DOM актуализира ефективно DOM, за да съответства на <code class="code-text">&lt;h1&gt;Hello, Sara&lt;/h1&gt;</code>.</li>
+          </ol>
+          <p><b>Забележка:</b> Имената на компонентите започват винаги с главна буква. React третира компонентите, започващи с малки букви, като DOM тагове. Например <code class="code-text">&lt;div /&gt;</code> представлява HTML таг div, но <code class="code-text">&lt;Welcome /&gt;</code> представлява компонент и изисква <code class="code-text">Welcome</code> в scope-а.</p>
+          <h4>Композиране на компоненти</h4>
+          <p>Компонентите могат да се отнасят до други компоненти в изхода си. Това позволява да се използва една и съща абстракция на компонент за всяко ниво на детайлност. Бутон, формуляр, диалогов прозорец, екран - в приложенията React всички те обикновено се изразяват като компоненти.</p>
+          <p>Например може да се създаде <code class="code-text">App</code> компонент, който рендерира <code class="code-text">Welcome</code> много пъти:</p>
+          <p>Обикновено новите приложения на React имат само един <code class="code-text">App</code> компонент най-отгоре.</p>
+          <h4>Свойствата не трябва да се променят</h4>
+          <p>Независимо дали компонент се декларира като функция или клас, той никога не трябва да променя собствените си свойства. Например в тази <code class="code-text">sum</code> функция:</p>
+          <pre>
+<code>function sum(a, b) {
+  return a + b;
+}</code></pre>
+          <p>Такива функции се наричат „чисти“ (<i>pure</i>), тъй като те не се опитват да променят своя вход и винаги връщат един и същ резултат за един и същи вход.</p>
+          <p>За разлика от това, тази функция е нечиста, защото променя собствения си вход:</p>
+          <pre>
+<code>function withdraw(account, amount) {
+  account.total -= amount;
+}</code></pre>
+          <p>React е доста гъвкав, но има едно строго правило: <i>Всички React компоненти трябва да действат като чисти функции по отношение на техните свойства.</i> Разбира се, потребителските интерфейси на приложенията са динамични и се променят с течение на времето. Въпреки това в React има концепция за „състояние“ (<i>state</i>), която позволява на компонентите на React да променят изхода си с течение на времето в отговор на потребителски действия, мрежови отговори и всичко друго, без да нарушава това правило.</p>
+        </section>
+        <section id="forms">
+          <h3>Форми</h3>
+          <p>Елементите на HTML формата работят малко по-различно от другите DOM елементи в React, тъй като елементите на формата естествено поддържат някакво вътрешно състояние. Например тази форма в обикновен HTML приема едно име:</p>
+          <pre>
+<code>&lt;form&gt;
+  &lt;label&gt;
+    Name:
+    &lt;input type="text" name="name" /&gt;
+  &lt;/label&gt;
+  &lt;input type="submit" value="Submit" /&gt;
+&lt;/form&gt;
+</code></pre>
+          <p>Тази форма има поведението по подразбиране на HTML форма при преглеждане на нова страница, когато потребителят изпрати формата. Няма нужда да се търси специално това поведение в React, то просто работи. Но в повечето случаи е удобно да има функция JavaScript, която обработва подаването на формуляра и има достъп до данните, които потребителят е въвел във формуляра. Стандартният начин да се постигне това е чрез техника, наречена „контролирани компоненти“.</p>
+          <h4>Контролирани компоненти</h4>
+          <p>В HTML елементите на форми като <code>&lt;input&gt;</code>, <code>&lt;textarea&gt;</code>  и <code>&lt;select&gt;</code> обикновено поддържат собственото си състояние и го актуализират въз основа на потребителския вход. В React изменяемото състояние обикновено се съхранява в свойството на състоянието на компонентите и се актуализира само със <code>setState()</code>.</p>
+          <p>Можем да комбинираме двете, като накараме състоянието на React да бъде „единственият източник на истината“. Тогава React компонентът, който изобразява форма, също контролира какво се случва в тази форма при последващо въвеждане от потребителя. Елемент на входна форма, чиято стойност се контролира от React по този начин, се нарича „контролиран компонент“.</p>
+          <p>Например, за да се извежда от предишния пример името, когато е изпратено, формата може да се напише като контролиран компонент:</p>
+<figure id="pure-code-4" class="pure-code">
+            <pre>
+<code>class NameForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {value: ''};
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+
+  handleSubmit(event) {
+    alert('A name was submitted: ' + this.state.value);
+    event.preventDefault();
+  }
+
+  render() {
+    return (
+      &lt;form onSubmit={this.handleSubmit}&gt;
+        &lt;label&gt;
+          Name:
+          &lt;input type="text" value={this.state.value} onChange={this.handleChange} /&gt;
+        &lt;/label&gt;
+        &lt;input type="submit" value="Submit" /&gt;
+      &lt;/form&gt;
+    );
+  }
+}</code></pre>
+            <figcaption class="image-description">Код 4. Форма <a href="#source-6">[6]</a></figcaption>
+            <button class="show-result"><a href="https://codepen.io/gaearon/pen/VmmPgp?editors=0010" target="_blank">Изпробвай в CodePen</a></button>
+          </figure>
+          <p>Тъй като атрибутът value е зададен на елемента, показваната стойност винаги ще бъде <code>this.state.value</code>, което прави React състоянието източник на истината. Тъй като <code>handleChange</code> работи при всяко натискане на клавиш, за да актуализира състоянието на React, показаната стойност ще се актуализира, когато потребителските въвежда текст.</p>
+          <p>При контролиран компонент стойността на входа винаги се определя от състоянието на реагиране. Въпреки че това означава, че трябва да се въвежда малко повече код, вече може да се предава стойността и на други елементи на потребителския интерфейс или да се нулира от други манипулатори на събития.</p>
+          <h4>Алтернативи на контролираните компоненти</h4>
+          <p>Понякога може да бъде досадно да се използват контролирани компоненти, защото трябва да се напише манипулатор на събития за всеки начин, по който вашите данни могат да се променят и да се пренасочи цялото състояние на въвеждане чрез React компонент. Това може да стане особено досадно, когато се конвертира съществуваща кодова база в React или се интегрира React приложение с не-React библиотека. В тези ситуации може да е по-добре да се използват <a href="https://reactjs.org/docs/uncontrolled-components.html" target="_blank">неконтролирани компоненти</a>, алтернативна техника за внедряване на формуляри за въвеждане.</p>
+          <p>Още за React може да се прочете <a href="https://reactjs.org/docs/getting-started.html" target="_blank">тук</a>.</p>
+        </section>
+      </section>
+      <section id="states">
+        <h2 class="subsection-header">Управление на състоянията</h2>
+        <section id="redux">
+          <h3>Redux - удобен контейнер на състоянията</h3>
+          <p>В началото трябва да се спомене, че Redux може да се използва и с други рамки като Angular или Vue, а не само с React. Но въпреки това Redux се счита за инструмент, който трябва да се научи от всеки софтуерен инженер, използващ React, тъй като се счита, че се прилага в голяма част от React приложенията. Redux може да се използва и с Angular, но вероятността разработчик на React да познава Redux е много по-голяма от тази на Angular. Също така има повече подкрепа от общността, когато се учи Redux заедно с React.</p>
+          <p>Redux опростява съхраняването и управлението на състоянията на компонентите в големи приложения с много динамични елементи, при които това става все по-трудно. Redux съхранява състоянието на приложението в един обект и позволява на всеки компонент да има достъп до състоянието на приложението, без да се занимава с компоненти деца или да използва обратни извиквания (<i>callbacks</i>). Например, когато има два компонента, които споделят едно и също състояние (като подробни и общи изгледи на изображението по-долу) и стоят отделно в дървото, без Redux, данните трябва да се предават през множество междинни компоненти с всички проблеми, които са свързани с това.</p>
+          <figure class="image-block">
+            <img src="img/masterdetail.png" alt="Master and detail interface redux" class="main-image">
+            <figcaption class="image-description">Фигура 5. Главният и детайлният интерфейси споделят едни и същи данни, но преминаването към най-близкия предшественик на тези два компонента може да е високо в дървото. <a href="#source-1">[1]</a> Пример от Марк Ериксон и София Шумейкър на <a href="https://www.fullstackreact.com/articles/redux-with-mark-erikson/" target="_blank">fullstackreact.com</a></figcaption>
+          </figure>
+          <p>Redux предоставя обект за централизирано съхранение на данни, за да позволи на тези компоненти директен достъп до него. Освен това, когато състоянията стават по-управляеми, приложението е по-лесно да тества и регистрира промени в данните. Повече за Redux има в <a href="https://medium.freecodecamp.org/understanding-redux-the-worlds-easiest-guide-to-beginning-redux-c695f45546f6" target="_blank">книгата Understanding Redux</a> от Ohans Emmanuel, както и на <a href="https://redux.js.org/" target="_blank">официалния сайт на библиотеката.</a></p>
+        </section>
+        <section id="hooks">
+          <h3>React Hooks - подобрено управление на състоянията</h3>
+          <p>До февруари 2019 г. разработчиците на React имат само два начина да зададат състояние - да дефинират локално състояние в компонента или да използват рамки за управление на състоянието като MobX или Redux, за да го зададат като глобално състояние.</p>
+          <p>React представя своето Hooks API във версия 16.8. Най-големият бонус на Hook е, че позволява споделяне на логика на състоянието между компонентите, без да се преустройва целият кодов блок. Заедно с това, Hooks позволява повторното използване на логиката между компонентите, без да променя структурата му. Той също така позволява разделянето на конкретен единичен компонент на няколко по-малки функции, въз основа на ролите, към които се отнасят тези парчета, вместо да ги разбива според техните методи на жизнения цикъл (<i>lifecycle methods</i>). Също толкова важно за разработчиците, Hooks ги спасява от писане на класове за всеки компонент и задълбочаване в теорията на JavaScript, като същевременно позволява използването на всички предимства на React.</p>
+        </section>
+      </section>
+      <section id="why-react">
+        <h2 class="subsection-header">Защо да използваме React?</h2>
+        <p>В последните години използването на JavaScript се увеличи, а заедно с това се появиха и различни алтернативи на React като <a href="https://angular.io/" target="_blank">Angular</a> и <a href="https://vuejs.org/" target="_blank">Vue.js</a>. Ето няколко основни предимства на React, които биха го направили по-предпочитан.</p>
+        <h3>React е гъвкав</h3>
+        <p>React е забележително гъвкав. Може да се използва на голямо разнообразие от платформи за изграждане на качествени потребителски интерфейси. React е библиотека, НЕ рамка. Това му позволява да се превърне в такъв забележителен инструмент.</p>
+        <h3>API на React е много лесен за научаване</h3>
+        <p>React има много малко понятия за научаване. Традиционните рамки като Angular и Vue задвижват HTML. Те използват JavaScript в HTML. Те създават HTML атрибути, които му дават допълнителни възможности. Основният проблем на този подход за програмистите е, че трябва да научат тези нови HTML атрибути или винаги да търсят в официалната документация. React използва обратния подход. Той използва HTML (JSX) вътре в JavaScript. Чрез този подход разработчиците могат да се справят с чисти JavaScript и HTML.</p>
+        <h3>React има поддръжка и използва ресурсите на Facebook</h3>
+        <p>React се използва широко в приложението и уебсайта на Facebook и в Instagram. Ето защо Facebook е дълбоко отдаден на тази библиотека. Те използват над 50 000 React компоненти в производствената си среда. Четиримата най-добри сътрудници на React в GitHub са щатни служители на Facebook.</p>
+        <h3>React има широка подкрепа от общността</h3>
+        <p>От 2015 г. популярността на React непрекъснато нараства. Той има огромна активна общност и неговото <a href="https://github.com/facebook/react" target="_blank">хранилище в GitHub</a> има над 164 000 звезди. Това го поставя в топ 5 хранилища в GitHub. <a href="https://www.npmjs.com/package/react" target="_blank">NPM пакетът</a> на React също има милиони изтегляния седмично. Над 9K компании са съобщили в <a href="https://stackshare.io/react" target="_blank">Stackshare</a>, че използват React, като сред тях могат да се забележат дори компании от Fortune 500. <a href="https://www.reactiflux.com/" target="_blank">Reactiflux</a> е общност, специално създадена за React Developers. Над 110 000 членове на общността участват в подпомагането на решаването и споделянето на свързани с React проблеми. В един от най-популярните уебсайтове сред разработчиците на софтуер - StackOverflow, могат да се намерят над 250 000 въпроса за React и свързаните с него библиотеки.</p>
+        <h3>React има много добра производителност</h3>
+        <p>Екипът, създал React, осъзнава, че JavaScript е бърз, но актуализирането на DOM го прави бавен. React минимизира промените в DOM и прилага най-ефективния и интелигентен начин за актуализиране на DOM. Преди React, повечето рамки и библиотеки актуализират DOM неинтелигентно, за да отразят ново състояние. Това води до промени в значителна част от страницата.</p>
+        <h3>React е лесен за тестване</h3>
+        <p>Дизайнът на React е много удобен за тестване. В мрежата има голямо разнообразие от рамки за тестване на JavaScript, които могат да се използват за тестване на React.js (тъй като това е и библиотека на JavaScript). Някои популярни рамки за тестване са <a href="https://mochajs.org/" target="_blank">Mocha</a>, <a href="https://jasmine.github.io/" target="_blank">Jasmine</a>, <a href="https://github.com/substack/tape" target="_blank">Tape</a>, <a href="https://qunitjs.com/" target="_blank">QUnit</a> и <a href="https://github.com/avajs/ava" target="_blank">AVA</a>.</p>
+      </section>
+      <section id="sources">
+        <h2 class="subsection-header">Източници</h2>
+        <ul class="sources-list">
+          <li id="source-1" class="sources-bullet"><b>[1] “The Good and the Bad of ReactJS and React Native”</b>, AltexSoft, публикувано на <b>07.07.2020</b>, [<a href="https://www.altexsoft.com/blog/engineering/the-good-and-the-bad-of-reactjs-and-react-native/" target="_blank">https://www.altexsoft.com/blog/engineering/the-good-and-the-bad-of-reactjs-and-react-native/</a>], последно посетен на 11.04.2021</li>
+          <li id="source-2" class="sources-bullet"><b>[2]</b> Prayaag Kasundra, <b>“10 ReactJS tools to boost your web development skills”</b>, opensource.com, публикувано на <b>30.06.2020</b>, [<a href="https://opensource.com/article/20/6/reactjs-tools" target="_blank">https://opensource.com/article/20/6/reactjs-tools</a>], последно посетен на 11.04.2021</li>
+          <li id="source-3" class="sources-bullet"><b>[3] “Basic setup for a web application”</b>, Jon Haddow, публикувано на <b>03.06.2020</b>, [<a href="https://jon.haddow.me/blog/basic-setup-for-a-web-application" target="_blank">https://jon.haddow.me/blog/basic-setup-for-a-web-application</a>], последно посетен на 11.04.2021</li>
+          <li id="source-4" class="sources-bullet"><b>[4] “Building a React application with webpack”</b>, Jon Haddow, публикувано на <b>13.10.2020</b>, [<a href="https://jon.haddow.me/blog/setup-react-with-webpack" target="_blank">https://jon.haddow.me/blog/setup-react-with-webpack</a>], последно посетен на 11.04.2021</li>
+          <li id="source-5" class="sources-bullet"><b>[5] How Snowpack Works</b>, Snowpack, [<a href="https://www.snowpack.dev/concepts/how-snowpack-works" target="_blank">https://www.snowpack.dev/concepts/how-snowpack-works</a>], последно посетено на 11.04.2021</li>
+          <li id="source-6" class="sources-bullet"><b>[6] Getting Started</b>, React, [<a href="https://reactjs.org/docs/getting-started.html" target="_blank">https://reactjs.org/docs/getting-started.html</a>], последно посетен на 11.04.2021</li>
+          <li id="source-7" class="sources-bullet"><b>[7]</b> Suraj Surve, <b>“Why You Should Use React.js For Web Development”</b>, freecodecamp.org, публикувано на <b>18.02.2021</b>, [<a href="https://www.freecodecamp.org/news/why-use-react-for-web-development/" target="_blank">https://www.freecodecamp.org/news/why-use-react-for-web-development/</a>], последно посетен на 11.04.2021</li>
+        </ul>
+      </section>
+    </article>
+  </main>
+  <footer>
+    <b>&#169; 2021</b>
+  </footer>
+</body>
+
+</html>

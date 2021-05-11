@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="bg">
+
+<head>
+  <meta charset="utf-8">
+  <title>Регистрация</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div id="container">
+    <form name="registerForm" method="post" onsubmit="return validate()">
+      <input id="username" type="text" placeholder="Потребителско име" class="userData" onblur="validateUsername()">
+      <p id="wrongUsername" class="wrongCredentialMessage">Грешно потребителско име</p>
+      <input id="password" type="password" placeholder="Парола" class="userData" onblur="validatePassword()">
+      <p id="wrongPassword" class="wrongCredentialMessage">Грешна парола</p>
+      <input id="phone" placeholder="Телефон" class="userData" onblur="validatePhone()">
+      <p id="wrongPhone" class="wrongCredentialMessage">Грешен телефон</p>
+      <input id="email" placeholder="Имейл адрес" class="userData" onblur="validateEmail()">
+      <p id="wrongEmail" class="wrongCredentialMessage">Грешен имейл</p>
+      <select id="role" class="userData">
+        <option value="1"> Собственик </option>
+        <option value="2"> Наемател </option>
+      </select>
+      <input id="confirmPassword" type="password" placeholder="Повтори парола" class="userData"
+        onblur="validateConfirmPassword()">
+      <p id="wrongConfirmPassword" class="wrongCredentialMessage">Паролата не е същата</p>
+      <input id="numberAppartement" placeholder="Номер на апартамента" class="userData" onblur="validateNumberAppartement()">
+      <p id="wrongNumberAppartement" class="wrongCredentialMessage">Грешен номер на апартамент</p>
+      <button id="registerButton" class="submit">Регистрирай ме!</button>
+    </form>
+    <script src="script.js"></script>
+  </div>
+</body>
+
+</html>
