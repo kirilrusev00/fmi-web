@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="bg">
+
+<head>
+  <meta charset="utf-8">
+  <title>Регистрация</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div id="container">
+    <form name="registerForm" method="post" onsubmit="validate(); return false">
+      <input id="username" type="text" placeholder="Потребителско име" class="user-data" onblur="validateUsername()" required>
+      <p id="wrong-username" class="error"></p>
+      <input id="name" type="text" placeholder="Име" class="user-data" onblur="validateName()" required>
+      <p id="wrong-name" class="error"></p>
+      <input id="family-name" type="text" placeholder="Фамилия" class="user-data" onblur="validateFamilyName()" required>
+      <p id="wrong-family-name" class="error"></p>
+      <input id="email" placeholder="Имейл адрес" class="user-data" onblur="validateEmail()">
+      <p id="wrong-email" class="error"></p>
+      <input id="password" type="password" placeholder="Парола" class="user-data" onblur="validatePassword()" required>
+      <p id="wrong-password" class="error"></p>
+      <input id="street" type="text" placeholder="Улица" class="user-data">
+      <input id="city" type="text" placeholder="Град" class="user-data">
+      <input id="postal-code" type="text" placeholder="Пощенски код" class="user-data" onblur="validatePost()">
+      <p id="wrong-postal-code" class="error"></p>
+      <button id="register-btn" class="submit">Регистрирай ме!</button>
+      <p id="existing-user" class="error"></p>
+      <p id="success">Успешна регистрация!</p>
+    </form>
+    <script src="script.js"></script>
+  </div>
+</body>
+
+</html>
